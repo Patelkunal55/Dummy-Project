@@ -9,5 +9,5 @@ class Experiment : AppCompatActivity() {
         setContentView(R.layout.activity_experiment)
     }
 
-    //write a function a
+    //write a function of average
 }

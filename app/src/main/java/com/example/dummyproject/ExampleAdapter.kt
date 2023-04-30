@@ -1,5 +1,6 @@
 package com.example.dummyproject
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -12,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.example_item.view.*
 
-class ExampleAdapter(private val exampleList : List<ExampleItem>,
-private val listener : OnItemClickListener) : RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>(){
+class ExampleAdapter(val context: Context, private val exampleList : List<Article>
+) : RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
@@ -23,9 +24,9 @@ private val listener : OnItemClickListener) : RecyclerView.Adapter<ExampleAdapte
 
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem = exampleList[position]
-        holder.mImageView.setImageResource(currentItem.imageResource)
-        holder.mTextView1.text = currentItem.text1
-        holder.mTextView2.text = currentItem.text2
+        //holder.mImageView.setImageResource(currentItem.imageResource)
+        holder.mTextView1.text = currentItem.title
+        holder.mTextView2.text = currentItem.description
 
     }
 
@@ -36,6 +37,9 @@ private val listener : OnItemClickListener) : RecyclerView.Adapter<ExampleAdapte
         val mTextView1 : TextView = itemView.text_view
         val mTextView2 : TextView = itemView.text_view1
 
+         val Id: TextView = itemView.text_view
+         var title: TextView = itemView.text_view1
+
 
          init {
              itemView.setOnClickListener(this)
@@ -45,7 +49,7 @@ private val listener : OnItemClickListener) : RecyclerView.Adapter<ExampleAdapte
 
              val position = bindingAdapterPosition
              if (position != RecyclerView.NO_POSITION) {
-                 listener.onItemClick(position)
+
              }
 
          }
